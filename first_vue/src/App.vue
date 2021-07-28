@@ -5,8 +5,8 @@
     <!--변수(in 왼쪽)는 2개까지 지정 가능, (각 array data, 1씩 증가하는 데이터)-->
   </div>
 
-  <img alt="Vue logo" src="./assets/logo.png" />
   <div v-for="(e, i) in products" :key="i">
+    <img :src="./assets/images/room + `{{i}}` + .jpg" class="room-img"/>
     <h4 class="title">{{ e[0] }}</h4>
     <p>전세금 {{ e[1] }} 만원</p>
     <button @click="increase(i)">허위 매물 신고</button>
@@ -24,6 +24,8 @@
     <!--모든 설정값들 보려면 Ctrl + space bar!!! WOW 이제알았네-->
     <!--Vue는 데이터 실시간 렌더링이 가능해서 코드가 굉장히 간결해진다.-->
   
+
+  <!--데이터를 어떻게 만들어야 내가 편할까 생각해보기-->
 </template>
 
 <script>
@@ -43,6 +45,7 @@ export default {
       products: [["역삼동원룸", 12000], ["천호동원룸",9000], ["마포구원룸",22000]],
       // prices: [12000, 9000, 22000],
       menus: ["HOME", "PRODUCTS", "ABOUT"],
+      roomImg: ["./assets/images/room0.jpg","./assets/images/room1.jpg","./assets/images/room2.jpg"]
     };
   },
   methods : { //vue의 함수 만드는 곳
@@ -76,6 +79,10 @@ export default {
 .menu a {
   color: white;
   padding: 10px;
+}
+.room-img{
+  width: 300px;
+  height: auto;
 }
 </style>
 
