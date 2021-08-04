@@ -6,21 +6,25 @@
   </div>
 
   <div v-for="(e, i) in rooms" :key="i">
-    <!-- <img :src={{rooms[i].img}} class="room-img"/> -->
-    <h4 class="title">{{ e.title }}</h4>
-    <p>전세금 {{ e.price }} 만원</p>
-    <button @click="increase(i)">허위 매물 신고</button>
-    <button @click="decrease(i)">신고 취소</button>
-    <span>신고 수 : {{e.report}}</span>
-
+    <div class="box">
+      <img :src="e.img" class="room-img"/>
+      <h4 class="title">{{ e.title }}</h4>
+      <p>전세금 {{ e.price }} 만원</p>
+    </div>
+    <div class="report-box">
+      <button class="btn" @click="increase(i)">허위 매물 신고</button>
+      <button class="btn" @click="decrease(i)">신고 취소</button>
+      <span>신고 수 : {{e.report}}</span>
+    </div>
   </div>
-  <!-- <div>
-    <h4 class="title">기흥구 아파트</h4>
-    <p>전세금 22000 만원</p>
-    <button @click="increase">허위 매물 신고</button><span>신고 수 : {{report}}</span>
-    <button @click="decrease">신고 취소</button>
-  </div> -->
-    <!-- variable++  ===  variable += 1; -->
+
+  <div class="modal-overlay">
+    <div class="modal">
+      <h4>TITLE</h4>
+      <p>CONTENT</p>
+    </div>
+  </div>
+
     <!--모든 설정값들 보려면 Ctrl + space bar!!! WOW 이제알았네-->
     <!--Vue는 데이터 실시간 렌더링이 가능해서 코드가 굉장히 간결해진다.-->
   
@@ -87,6 +91,9 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+*{
+  box-sizing: border-box;
+}
 .title {
   font-size: 25px;
 }
@@ -98,10 +105,49 @@ export default {
 .menu a {
   color: white;
   padding: 10px;
+  cursor: pointer;
 }
 .room-img{
-  width: 300px;
+  width: 50%;
   height: auto;
+  margin: 10px;
+}
+.btn{
+  outline:0;
+  border:0;
+  padding: 8px 12px;
+  margin-right: 5px;
+  border-radius: 10px;
+  color:#fff;
+  background-color: coral;
+  cursor: pointer;
+}
+.box{
+  border:1px solid dimgray;
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 10px;
+}
+.report-box{
+  margin: 8px 0 30px;
+}
+.modal-overlay{
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal{
+  width: 500px;
+  height: 400px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
 }
 </style>
 
