@@ -5,13 +5,13 @@
     <!--변수(in 왼쪽)는 2개까지 지정 가능, (각 array data, 1씩 증가하는 데이터)-->
   </div>
 
-  <div v-for="(e, i) in products" :key="i">
-    <img :src="./assets/images/room + `{{i}}` + .jpg" class="room-img"/>
-    <h4 class="title">{{ e[0] }}</h4>
-    <p>전세금 {{ e[1] }} 만원</p>
+  <div v-for="(e, i) in rooms" :key="i">
+    <!-- <img :src={{rooms[i].img}} class="room-img"/> -->
+    <h4 class="title">{{ e.title }}</h4>
+    <p>전세금 {{ e.price }} 만원</p>
     <button @click="increase(i)">허위 매물 신고</button>
     <button @click="decrease(i)">신고 취소</button>
-    <span>신고 수 : {{report[i]}}</span>
+    <span>신고 수 : {{e.report}}</span>
 
   </div>
   <!-- <div>
@@ -40,20 +40,39 @@ export default {
     // 2. Vue의 실시간 자동 렌더링 쓰기 위해서 사용한다. (요게 중요) 데이터를 변경하면 실시간으로 HTML에 반영된다
     // 자주 변경되는 데이터들에 사용하고, 잘 변경되지 않는 데이터는 안쓰는게 낫다.
     return {
-      report: [0,0,0],
+      rooms: [
+        {
+          title: "역삼동원룸",
+          price: 12000,
+          report: 0,
+          img: require("./assets/images/room0.jpg")
+        }, 
+        {
+          title: "천호동원룸",
+          price: 15000,
+          report: 0,
+          img: require("./assets/images/room1.jpg")
+        }, 
+        {
+          title: "마포구원룸",
+          price: 22000,
+          report: 0,
+          img: require("./assets/images/room2.jpg")
+        }
+      ],
+
       styleRed: "color : tomato",
-      products: [["역삼동원룸", 12000], ["천호동원룸",9000], ["마포구원룸",22000]],
-      // prices: [12000, 9000, 22000],
+      // report: [0,0,0],
+      // products: [["역삼동원룸", 12000], ["천호동원룸",9000], ["마포구원룸",22000]],
       menus: ["HOME", "PRODUCTS", "ABOUT"],
-      roomImg: ["./assets/images/room0.jpg","./assets/images/room1.jpg","./assets/images/room2.jpg"]
     };
   },
   methods : { //vue의 함수 만드는 곳
     increase(i){
-      this.report[i]++; //this는 이 문서(이 파일?)를 뜻함
+      this.rooms[i].report++; //this는 이 문서(이 파일?)를 뜻함
     },
     decrease(i){
-      this.report[i]--;
+      this.rooms[i].report--;
     }
   },
   components: {},
