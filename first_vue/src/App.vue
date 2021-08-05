@@ -8,8 +8,8 @@
   <div v-for="(e, i) in products" :key="i">
     <div class="box">
       <img :src="e.image" class="room-img"/>
-      <h4 @click="modal_click = true" class="title">{{ e.title }}</h4>
-      <p>월세 {{ e.price }} 원</p>
+      <h4 @click="modal_click = true; clicked_num = i" class="title">{{ e.title }}</h4>
+      <p>월세 {{ e.price }}만 원</p>
     </div>
     <!-- <div class="report-box">
       <button class="btn" @click="increase(i)">허위 매물 신고</button>
@@ -20,12 +20,23 @@
 
   <div class="modal-overlay" v-if="modal_click == true"> <!-- if 조건식이 참일때만 이 div를 표시함-->
     <div class="modal">
-      <h4>TITLE</h4>
-      <p>CONTENT</p>
+      <img :src="products[clicked_num].image" class="modal-img"/>
+      <h4>{{products[clicked_num].title}}</h4>
+      <p>{{products[clicked_num].content}}</p>
+      <p>월세 {{products[clicked_num].price}}만 원</p>
       <button @click="modal_click = false">close</button>
     </div>
   </div>
 
+  <div v-if="1 == 1">
+    1 + 1 = 2
+  </div>
+  <div v-else-if="1 == 2">
+    1 + 1 = 1
+  </div>
+  <div v-else>
+    1 + 1 = 0
+  </div>
     <!--모든 설정값들 보려면 Ctrl + space bar!!! WOW 이제알았네-->
     <!--Vue는 데이터 실시간 렌더링이 가능해서 코드가 굉장히 간결해진다.-->
   
@@ -70,6 +81,7 @@ export default {
         }
       ],
       products: oneroom,
+      clicked_num: 0,
       modal_click: false,
       styleRed: "color : tomato",
       // report: [0,0,0],
@@ -118,6 +130,12 @@ export default {
   height: auto;
   margin: 10px;
 }
+.modal-img{
+  width:400px;
+  height: auto;
+  margin: 10px;
+  border-radius: 5px;
+}
 .btn{
   outline:0;
   border:0;
@@ -150,7 +168,7 @@ export default {
 }
 .modal{
   width: 500px;
-  height: 400px;
+  height: 430px;
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
