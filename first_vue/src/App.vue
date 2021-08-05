@@ -8,7 +8,7 @@
   <div v-for="(e, i) in rooms" :key="i">
     <div class="box">
       <img :src="e.img" class="room-img"/>
-      <h4 class="title">{{ e.title }}</h4>
+      <h4 @click="modal_click = true" class="title">{{ e.title }}</h4>
       <p>전세금 {{ e.price }} 만원</p>
     </div>
     <div class="report-box">
@@ -18,10 +18,11 @@
     </div>
   </div>
 
-  <div class="modal-overlay">
+  <div class="modal-overlay" v-if="modal_click == true"> <!-- if 조건식이 참일때만 이 div를 표시함-->
     <div class="modal">
       <h4>TITLE</h4>
       <p>CONTENT</p>
+      <button @click="modal_click = false">close</button>
     </div>
   </div>
 
@@ -49,22 +50,25 @@ export default {
           title: "역삼동원룸",
           price: 12000,
           report: 0,
-          img: require("./assets/images/room0.jpg")
+          img: require("./assets/images/room0.jpg"),
+          modal: false
         }, 
         {
           title: "천호동원룸",
           price: 15000,
           report: 0,
-          img: require("./assets/images/room1.jpg")
+          img: require("./assets/images/room1.jpg"),
+          modal: false
         }, 
         {
           title: "마포구원룸",
           price: 22000,
           report: 0,
-          img: require("./assets/images/room2.jpg")
+          img: require("./assets/images/room2.jpg"),
+          modal: false
         }
       ],
-
+      modal_click: false,
       styleRed: "color : tomato",
       // report: [0,0,0],
       // products: [["역삼동원룸", 12000], ["천호동원룸",9000], ["마포구원룸",22000]],
