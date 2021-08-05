@@ -5,17 +5,17 @@
     <!--변수(in 왼쪽)는 2개까지 지정 가능, (각 array data, 1씩 증가하는 데이터)-->
   </div>
 
-  <div v-for="(e, i) in rooms" :key="i">
+  <div v-for="(e, i) in products" :key="i">
     <div class="box">
-      <img :src="e.img" class="room-img"/>
+      <img :src="e.image" class="room-img"/>
       <h4 @click="modal_click = true" class="title">{{ e.title }}</h4>
-      <p>전세금 {{ e.price }} 만원</p>
+      <p>월세 {{ e.price }} 원</p>
     </div>
-    <div class="report-box">
+    <!-- <div class="report-box">
       <button class="btn" @click="increase(i)">허위 매물 신고</button>
       <button class="btn" @click="decrease(i)">신고 취소</button>
       <span>신고 수 : {{e.report}}</span>
-    </div>
+    </div> -->
   </div>
 
   <div class="modal-overlay" v-if="modal_click == true"> <!-- if 조건식이 참일때만 이 div를 표시함-->
@@ -36,6 +36,7 @@
 <script>
 // yarn 이 더 안전
 // yarn run serve 하면 열림
+import oneroom from "./assets/oneroom";
 
 export default {
   name: "App",
@@ -68,6 +69,7 @@ export default {
           modal: false
         }
       ],
+      products: oneroom,
       modal_click: false,
       styleRed: "color : tomato",
       // report: [0,0,0],
@@ -76,12 +78,12 @@ export default {
     };
   },
   methods : { //vue의 함수 만드는 곳
-    increase(i){
-      this.rooms[i].report++; //this는 이 문서(이 파일?)를 뜻함
-    },
-    decrease(i){
-      this.rooms[i].report--;
-    }
+    // increase(i){
+    //   this.rooms[i].report++; //this는 이 문서(이 파일?)를 뜻함
+    // },
+    // decrease(i){
+    //   this.rooms[i].report--;
+    // }
   },
   components: {},
 };
