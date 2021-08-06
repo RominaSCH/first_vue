@@ -5,6 +5,12 @@
     <!--변수(in 왼쪽)는 2개까지 지정 가능, (각 array data, 1씩 증가하는 데이터)-->
   </div>
 
+  <Discount/>
+  <!--컴포넌트 쓰는 법
+  1. vue파일 import
+  2. components:{}에 등록하고
+  3. 사용 -->
+
   <div v-for="(e, i) in products" :key="i">
     <div class="box">
       <img :src="e.image" class="room-img"/>
@@ -18,17 +24,9 @@
     </div> -->
   </div>
 
-  <div class="modal-overlay" v-if="modal_click == true"> <!-- if 조건식이 참일때만 이 div를 표시함-->
-    <div class="modal">
-      <img :src="products[clicked_num].image" class="modal-img"/>
-      <h4>{{products[clicked_num].title}}</h4>
-      <p>{{products[clicked_num].content}}</p>
-      <p>월세 {{products[clicked_num].price}}만 원</p>
-      <button @click="modal_click = false">close</button>
-    </div>
-  </div>
+  <Modal />
 
-  <div v-if="1 == 1">
+  <!-- <div v-if="1 == 1">
     1 + 1 = 2
   </div>
   <div v-else-if="1 == 2">
@@ -36,7 +34,7 @@
   </div>
   <div v-else>
     1 + 1 = 0
-  </div>
+  </div> -->
     <!--모든 설정값들 보려면 Ctrl + space bar!!! WOW 이제알았네-->
     <!--Vue는 데이터 실시간 렌더링이 가능해서 코드가 굉장히 간결해진다.-->
   
@@ -48,6 +46,8 @@
 // yarn 이 더 안전
 // yarn run serve 하면 열림
 import oneroom from "./assets/oneroom";
+import Discount from './components/discount.vue';
+import Modal from './components/modal.vue';
 
 export default {
   name: "App",
@@ -97,7 +97,7 @@ export default {
     //   this.rooms[i].report--;
     // }
   },
-  components: {},
+  components: {Discount, Modal},
 };
 </script>
 
@@ -154,24 +154,6 @@ export default {
 }
 .report-box{
   margin: 8px 0 30px;
-}
-.modal-overlay{
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0,0,0,.6);
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.modal{
-  width: 500px;
-  height: 430px;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
 }
 </style>
 
