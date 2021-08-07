@@ -7,6 +7,12 @@
       <p>월세 {{ products[clicked_num].price }}만 원</p>
       <!-- <button @click="modal_click = false">close</button> -->
       <!-- props는 수정 금지임. -->
+
+      <!-- 부모 데이터를 자식이 쓰고 싶을 때 쓰는 것이 props
+      props 전송 3step 1.보내고 2.등록하고 3.사용
+      props 자식 컴포넌트에서는 read-only
+      modal.vue 에 데이터 만들어도 되지만 부모도 써야하는 데이터면
+      부모 컴포넌트에 만들어둬라.-->
     </div>
   </div>
 </template>
