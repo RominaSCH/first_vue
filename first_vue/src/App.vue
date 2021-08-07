@@ -24,8 +24,8 @@
     </div> -->
   </div>
 
-  <Modal />
-
+  <Modal :products="products" :clicked_num="clicked_num" :modal_click="modal_click"/>
+ <!-- : 는 대이터바인딩과 props 전송 2가지 기능이 있다 -->
   <!-- <div v-if="1 == 1">
     1 + 1 = 2
   </div>
@@ -84,8 +84,6 @@ export default {
       clicked_num: 0,
       modal_click: false,
       styleRed: "color : tomato",
-      // report: [0,0,0],
-      // products: [["역삼동원룸", 12000], ["천호동원룸",9000], ["마포구원룸",22000]],
       menus: ["HOME", "PRODUCTS", "ABOUT"],
     };
   },

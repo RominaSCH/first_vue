@@ -5,7 +5,8 @@
       <h4>{{ products[clicked_num].title }}</h4>
       <p>{{ products[clicked_num].content }}</p>
       <p>월세 {{ products[clicked_num].price }}만 원</p>
-      <button @click="modal_click = false">close</button>
+      <!-- <button @click="modal_click = false">close</button> -->
+      <!-- props는 수정 금지임. -->
     </div>
   </div>
 </template>
@@ -13,12 +14,11 @@
 <script>
 export default {
     name:"Modal",
-    data(){
-        return{
-            // clicked_num: 0,
-            modal_click: false,
-        }
-    }
+    props: {
+      products : Array, //받아온 데이터의 자료형 이름을 대문자로
+      modal_click: Boolean,
+      clicked_num: Number,
+    },
 };
 </script>
 
