@@ -1,18 +1,18 @@
 <template>
-  <div v-for="(e, i) in products" :key="i">
+  <!-- <div v-for="(e, i) in products" :key="i"> -->
     <div class="box">
-      <img :src="e.image" class="room-img"/>
-      <h4 class="title">{{ e.title }}</h4>
-      <p>월세 {{ e.price }}만 원</p>
+      <img :src="product.image" class="room-img"/>
+      <h4 class="title">{{ product.title }}</h4>
+      <p>월세 {{ product.price }}만 원</p>
     </div>
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>
 export default {
     name: "Card",
     props:{
-        products: Array,
+        product: Object,
 
     }
 }

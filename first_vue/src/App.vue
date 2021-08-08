@@ -10,8 +10,15 @@
   1. vue파일 import
   2. components:{}에 등록하고
   3. 사용 -->
+  <!-- <Discount 데이터이름-"Hello" 혹은 데이터이름="[123,456]" 
+  쉬운 데이터는 데이터 선언 빼고 직접 선언 가능 
+  작명="문자자료"
+  :작명="숫자자료"  : 들어간다! 
+  v-bind="Object 자료형" 
+  하지만 :Object-name="Object-name" 으로 자주 씀 -->
 
-  <Card :products="products" />
+  <Card :product="product" v-for="product in products" :key="product.id"/>
+ <!-- v-for="product in procudts" :key="product.id" -->
   <!-- <div v-for="(e, i) in products" :key="i">
     <div class="box">
       <img :src="e.image" class="room-img"/>
