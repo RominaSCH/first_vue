@@ -11,18 +11,14 @@
   2. components:{}에 등록하고
   3. 사용 -->
 
-  <div v-for="(e, i) in products" :key="i">
+  <Card :products="products" />
+  <!-- <div v-for="(e, i) in products" :key="i">
     <div class="box">
       <img :src="e.image" class="room-img"/>
       <h4 @click="modal_click = true; clicked_num = i" class="title">{{ e.title }}</h4>
       <p>월세 {{ e.price }}만 원</p>
     </div>
-    <!-- <div class="report-box">
-      <button class="btn" @click="increase(i)">허위 매물 신고</button>
-      <button class="btn" @click="decrease(i)">신고 취소</button>
-      <span>신고 수 : {{e.report}}</span>
-    </div> -->
-  </div>
+  </div> -->
 
   <Modal :products="products" :clicked_num="clicked_num" :modal_click="modal_click"/>
  <!-- : 는 대이터바인딩과 props 전송 2가지 기능이 있다 -->
@@ -48,6 +44,7 @@
 import oneroom from "./assets/oneroom";
 import Discount from './components/discount.vue';
 import Modal from './components/modal.vue';
+import Card from './components/card.vue';
 
 export default {
   name: "App",
@@ -95,7 +92,7 @@ export default {
     //   this.rooms[i].report--;
     // }
   },
-  components: {Discount, Modal},
+  components: {Discount, Modal, Card},
 };
 </script>
 
