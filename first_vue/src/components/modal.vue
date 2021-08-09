@@ -5,7 +5,7 @@
       <h4>{{ products[clicked_num].title }}</h4>
       <p>{{ products[clicked_num].content }}</p>
       <p>월세 {{ products[clicked_num].price }}만 원</p>
-      <!-- <button @click="modal_click = false">close</button> -->
+      <button @click="$emit('modalClose')" class="closeBtn">close</button>
       <!-- props는 수정 금지임. -->
 
       <!-- 부모 데이터를 자식이 쓰고 싶을 때 쓰는 것이 props
@@ -46,5 +46,13 @@ export default {
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
+}
+.closeBtn{
+  border:0;
+  outline: 0;
+  padding: 8px 14px;
+  background-color: darkcyan;
+  color: #fff;
+  border-radius: 5px;
 }
 </style>

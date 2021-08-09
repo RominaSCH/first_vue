@@ -2,7 +2,8 @@
   <!-- <div v-for="(e, i) in products" :key="i"> -->
     <div class="box">
       <img :src="product.image" class="room-img"/>
-      <h4 class="title">{{ product.title }}</h4>
+      <h4 @click="$emit('openModal', product.id)" class="title">{{ product.title }}</h4>
+      <!-- @click-"$emit("작명", 데이터)" 부모에게 데이터 보내는것  -->
       <p>월세 {{ product.price }}만 원</p>
     </div>
   <!-- </div> -->
@@ -21,6 +22,7 @@ export default {
 <style>
 .title {
   font-size: 25px;
+  cursor:pointer;
 }
 .box{
   border:1px solid dimgray;

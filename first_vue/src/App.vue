@@ -17,8 +17,8 @@
   v-bind="Object 자료형" 
   하지만 :Object-name="Object-name" 으로 자주 씀 -->
 
-  <Card :product="product" v-for="product in products" :key="product.id"/>
- <!-- v-for="product in procudts" :key="product.id" -->
+  <Card @openModal="modal_click = true; clicked_num = $event" :product="product" v-for="product in products" :key="product.id"/>
+<!-- 자식이 보낸 데이터는 $event 변수에 담겨있다-->
   <!-- <div v-for="(e, i) in products" :key="i">
     <div class="box">
       <img :src="e.image" class="room-img"/>
@@ -27,7 +27,7 @@
     </div>
   </div> -->
 
-  <Modal :products="products" :clicked_num="clicked_num" :modal_click="modal_click"/>
+  <Modal @modalClose="modal_click = false" :modal_click="modal_click" :products="products" :clicked_num="clicked_num"/>
  <!-- : 는 대이터바인딩과 props 전송 2가지 기능이 있다 -->
   <!-- <div v-if="1 == 1">
     1 + 1 = 2
