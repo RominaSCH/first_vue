@@ -25,6 +25,12 @@ export default {
       modal_click: Boolean,
       clicked_num: Number,
     },
+    // methods: {
+    //   funcSome(){
+    //     this.$emit('openModal', this.product.id) //함수로 바꿔 쓰고싶으면 메소드에 이렇게 쓰고
+    //     this 잊지말고            this 여기도 있고
+    //   }
+    // }
 };
 </script>
 
