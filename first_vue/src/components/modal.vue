@@ -4,8 +4,10 @@
       <img :src="products[clicked_num].image" class="modal-img" />
       <h4>{{ products[clicked_num].title }}</h4>
       <p>{{ products[clicked_num].content }}</p>
-      <p>월세 {{ products[clicked_num].price }}만 원</p>
-      <button @click="$emit('modalClose')" class="closeBtn">close</button>
+      <!-- <input @change="month = $event.target.value"> 은 아래와 같다-->
+      <input v-model="month">
+      <p>{{month}}개월 월세 {{ products[clicked_num].price * month}}만 원</p>
+      <button @click="$emit('modalClose'); month = 1;" class="closeBtn">close</button>
       <!-- props는 수정 금지임. -->
 
       <!-- 부모 데이터를 자식이 쓰고 싶을 때 쓰는 것이 props
@@ -20,6 +22,12 @@
 <script>
 export default {
     name:"Modal",
+    data(){
+      return{
+        month: 1,
+
+      }
+    },
     props: {
       products : Array, //받아온 데이터의 자료형 이름을 대문자로
       modal_click: Boolean,
