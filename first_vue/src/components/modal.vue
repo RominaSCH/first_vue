@@ -39,9 +39,13 @@ export default {
     },
     watch: { // data를 감시하는 기능
       month(data){ // 감시할 데이터를 함수형식으로 작성한다
-        if(data > 12){
+        if(data > 12){ //HW : input에 문자열 들어오면 alert()띄우고 month 값을 1로 되돌리기
           alert("please write under 12");
-        } //HW : input에 문자열 들어오면 alert()띄우고 month 값을 1로 되돌리기
+          this.month = 1;  //this 가 빠져서 안됐던거임!
+        }else if(isNaN(data) == true){
+          alert("please write the number");
+          this.month = 1;
+        }
       }
     },
     props: {
