@@ -27,9 +27,9 @@
     </div>
   </div> -->
 
-<div class="start" :class="{end : modal_click }"><!-- :class="{ 클래스명 : 조건(조건이 참일때 클래스가 붙음) }" -->
+<transition name="fade"><!-- :class="{ 클래스명 : 조건(조건이 참일때 클래스가 붙음) }" -->
   <Modal @modalClose="modal_click = false" :modal_click="modal_click" :products="products" :clicked_num="clicked_num"/>
- </div>
+</transition>
  <!-- : 는 대이터바인딩과 props 전송 2가지 기능이 있다 -->
   <!-- <div v-if="1 == 1">
     1 + 1 = 2
@@ -166,6 +166,18 @@ export default {
 }
 .end{
   opacity: 1;
+}
+
+.fade-enter-from{ /* <transition>의 css */ 
+  opacity: 0;
+  transform: translateY(-100px);
+}
+.fade-enter-active{
+  transition: all .5s;
+}
+.fade-enter-to{
+  opacity: 1;
+  transform: translateY(0px);
 }
 </style>
 

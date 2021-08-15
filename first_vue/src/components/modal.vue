@@ -65,7 +65,7 @@ export default {
 <style>
 .modal-overlay{
   width: 100vw;
-  height: 100vh;
+  height: 110vh;
   background-color: rgba(0,0,0,.6);
   position: fixed;
   top: 0;
