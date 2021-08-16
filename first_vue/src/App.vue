@@ -17,6 +17,11 @@
   v-bind="Object 자료형" 
   하지만 :Object-name="Object-name" 으로 자주 씀 -->
 
+  <button class="btn" @click="sortBack">원래 정렬로 되돌리기</button>
+  <button class="btn" @click="lowToHigh">낮은 가격순 정렬</button>
+  <button class="btn" @click="highToLow">높은 가격순 정렬</button>
+  <button class="btn" @click="alphabetSort">가나다순 정렬</button>
+
   <Card @openModal="modal_click = true; clicked_num = $event" :product="product" v-for="product in products" :key="product.id"/>
 <!-- 자식이 보낸 데이터는 $event 변수에 담겨있다-->
   <!-- <div v-for="(e, i) in products" :key="i">
@@ -100,6 +105,32 @@ export default {
     // decrease(i){
     //   this.rooms[i].report--;
     // }
+    sortBack(){
+      this.product.sort((a,b) => {
+        return a.id - b.id
+      }) // 오잉 왜 안되지
+    },
+    lowToHigh(){
+      this.products.sort((a, b) => { //this.products.price.sort 아님!
+        return a.price - b.price //여기에서 .price 하는거임!
+      })
+    },
+    highToLow(){
+      this.products.sort((a,b) => {
+        return b.price - a.price
+      })
+    },
+    alphabetSort(){
+      this.products.sort((a, b) => {
+        if(a.title < b.title){
+          return -1
+        }else if(a.title > b.title){
+          return 1
+        }else{
+          return 0
+        }
+      })
+    }
   },
   components: {Discount, Modal, Card},
 };
@@ -146,8 +177,6 @@ export default {
   padding: 8px 12px;
   margin-right: 5px;
   border-radius: 10px;
-  color:#fff;
-  background-color: coral;
   cursor: pointer;
 }
 .box{
