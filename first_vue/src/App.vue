@@ -91,6 +91,8 @@ export default {
           modal: false
         }
       ],
+      originProducts : [...oneroom], // a = b는 a가 b의 값을 공유하는 것이고
+      // a = [...b] 는 a가 b의 독립적인 array 복사본 값을 복사하는 것이다.
       products: oneroom,
       clicked_num: 0,
       modal_click: false,
@@ -105,10 +107,12 @@ export default {
     // decrease(i){
     //   this.rooms[i].report--;
     // }
-    sortBack(){
-      this.product.sort((a,b) => {
-        return a.id - b.id
-      }) // 오잉 왜 안되지
+    sortBack(){ //sort는 원본 파괴식 함수, map filter는 원본 보존식 함수
+      // this.product.sort((a,b) => {
+      //   return a.id - b.id
+      // }) // 오잉 왜 안되지
+      this.products = [...this.originProducts]; // [...] 없으면 한번밖에 작동 안함
+      //다른 방법도 있는데, 그 중 하나의 방법일 뿐!
     },
     lowToHigh(){
       this.products.sort((a, b) => { //this.products.price.sort 아님!
