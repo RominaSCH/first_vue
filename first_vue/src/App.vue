@@ -5,7 +5,7 @@
     <!--변수(in 왼쪽)는 2개까지 지정 가능, (각 array data, 1씩 증가하는 데이터)-->
   </div>
 
-  <Discount/>
+  <Discount v-if="showDiscount == true" :discountValue="discountValue"/>
   <!--컴포넌트 쓰는 법
   1. vue파일 import
   2. components:{}에 등록하고
@@ -59,6 +59,9 @@ import oneroom from "./assets/oneroom";
 import Discount from './components/discount.vue';
 import Modal from './components/modal.vue';
 import Card from './components/card.vue';
+//vue의 lifecycle
+// create -> mount -> conponent create -> update -> unmount
+// 중간에 hook을 걸 수 있다.
 
 export default {
   name: "App",
@@ -91,6 +94,8 @@ export default {
           modal: false
         }
       ],
+      showDiscount : true,
+      discountValue : 30,
       originProducts : [...oneroom], // a = b는 a가 b의 값을 공유하는 것이고
       // a = [...b] 는 a가 b의 독립적인 array 복사본 값을 복사하는 것이다.
       products: oneroom,
@@ -136,6 +141,34 @@ export default {
       })
     }
   },
+
+  //Hook 종류
+  // beforeCreate() 
+  // created()
+  // beforeMount()
+  // mounted()
+  // beforeUpdate()
+  // updated()
+  // beforeUnmount()
+  // unmounted()
+  updated(){ //input값에 2 넣으면 alert 뜨게
+
+  },
+  mounted(){ //server 에서 data를 가져와 넣을 때에도 hook을 쓴다. created나 mounted
+    // setTimeout(() => {  //this 쓰려면 function(){}말고 () => {} arrow function 사용하자
+    //   this.showDiscount = false;
+    // }, 2000)
+    setInterval(() => {
+      if(this.discountValue > 1){
+        this.discountValue -= 1;
+      }else{
+        this.showDiscount = false;
+      }
+      
+    }, 1000)
+
+  },
+
   components: {Discount, Modal, Card},
 };
 </script>
