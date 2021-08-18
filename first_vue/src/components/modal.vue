@@ -53,6 +53,12 @@ export default {
       modal_click: Boolean,
       clicked_num: Number,
     },
+    updated(){
+      if(this.month == 2){
+        alert("2개월 단위는 안받음")
+        this.month = 3;
+      }
+    },
     // methods: {
     //   funcSome(){
     //     this.$emit('openModal', this.product.id) //함수로 바꿔 쓰고싶으면 메소드에 이렇게 쓰고
