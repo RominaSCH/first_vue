@@ -8,12 +8,27 @@
     </form>
   </div>
 </nav>
+
+<div class="container mt-4">
+  <ContextList :data="e" v-for="(e, i) in blog" :key="i"/>
+</div>
+
+
+
 </template>
 
 <script>
+import ContextList from "./components/List.vue"
+import blogData from "./assets/blog"
 
 export default {
   name: 'App',
+  components: {ContextList},
+  data(){
+    return{
+      blog : blogData,
+    }
+  },
 }
 </script>
 
