@@ -9,10 +9,12 @@
   </div>
 </nav>
 
-<div class="container mt-4">
-  <!-- <ContextList :data="e" v-for="(e, i) in blog" :key="i"/> -->
-</div>
-<router-view :data="e" v-for="(e, i) in blog" :key="i"></router-view>
+<router-link class="btn" to="/">Home page</router-link>
+<router-link class="btn" to="/head">head page</router-link>
+<router-link class="btn" to="/list">List page</router-link>
+
+<router-view :blog="blog" ></router-view>
+<!-- props 전송은 router-view로 한다 -->
 
 
 </template>
@@ -40,5 +42,12 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.btn{
+  outline: 0;
+  border: 0;
+  background-color: lemonchiffon;
+  border-radius:10px;
+  
 }
 </style>

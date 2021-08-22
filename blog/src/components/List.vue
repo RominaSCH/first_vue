@@ -1,14 +1,14 @@
 <template>
-  <div class="box">
-      <h4>{{data.title}}</h4>
-      <p>{{data.content}}</p>
+  <div v-for="(e, i) in blog" :key="i" class="box">
+      <h4>{{e.title}}</h4>
+      <p>{{e.content}}</p>
   </div>
 </template>
 
 <script>
 export default {
     props:{
-        data:Object,
+        blog: Array,
     }
 }
 </script>
