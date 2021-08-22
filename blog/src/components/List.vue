@@ -1,6 +1,6 @@
 <template>
   <div v-for="(e, i) in blog" :key="i" class="box">
-      <h4>{{e.title}}</h4>
+      <router-link class="linkTitle" to="/detail">{{e.title}}</router-link>
       <p>{{e.content}}</p>
   </div>
 </template>
@@ -19,5 +19,13 @@ export default {
     border: 1px solid dimgrey;
     border-radius: 10px;
     padding: 20px;
+}
+.linkTitle{
+  outline: 0;
+  border: 0;
+  text-decoration: none;
+  color:#000;
+  font-size: 20px;
+  cursor: pointer;
 }
 </style>

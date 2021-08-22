@@ -9,9 +9,9 @@
   </div>
 </nav>
 
-<router-link class="btn" to="/">Home page</router-link>
-<router-link class="btn" to="/head">head page</router-link>
-<router-link class="btn" to="/list">List page</router-link>
+<router-link class="link" to="/">Home page  </router-link>
+<router-link class="link" to="/head">head page  </router-link>
+<router-link class="link" to="/list">List page</router-link>
 
 <router-view :blog="blog" ></router-view>
 <!-- props 전송은 router-view로 한다 -->
@@ -43,11 +43,16 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-.btn{
+.link{
+  display: flexbox;
   outline: 0;
   border: 0;
-  background-color: lemonchiffon;
+  background-color: silver;
   border-radius:10px;
-  
+  padding: 8px 14px;
+  margin-right: 10px;
+  text-decoration: none;
+  color:#000;
+
 }
 </style>
