@@ -1,6 +1,7 @@
 <template>
   <div v-for="(e, i) in blog" :key="i" class="box">
-      <router-link class="linkTitle" to="/detail">{{e.title}}</router-link>
+      <router-link class="linkTitle" :to="'/detail/' + e.number">{{e.title}}</router-link>
+      <!-- 요기 :랑 "'' + variable" 가 중요-->
       <p>{{e.content}}</p>
   </div>
 </template>

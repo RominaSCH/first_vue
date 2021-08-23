@@ -1,5 +1,5 @@
 <template>
-<nav class="navbar navbar-light bg-light">
+<!-- <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand">Navbar</a>
     <form class="d-flex">
@@ -7,13 +7,16 @@
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
   </div>
-</nav>
+</nav> -->
 
 <router-link class="link" to="/">Home page  </router-link>
 <router-link class="link" to="/head">head page  </router-link>
 <router-link class="link" to="/list">List page</router-link>
 
-<router-view :blog="blog" ></router-view>
+<div class="mt-5">
+  <router-view :blog="blog" ></router-view>
+</div>
+
 <!-- props 전송은 router-view로 한다 -->
 
 
